@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HomiSphere</title>
+  <meta name="description" content="HomiSphere - rent rooms easily" />
+
+</head>
+<body>
+  <h3>All Listings</h3>
+  <form method="GET" action="/listings/new">
+    <button>Create new list</button>
+  </form>
+ <ul>
+   <% for(let listing of listings){ %>
+    <li> <a href="/listings/<%= listing._id %>"> <%= listing.title %> </a> </li>
+  <% } %>
+ </ul>
+</body>
+</html>
