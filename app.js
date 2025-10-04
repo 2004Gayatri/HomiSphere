@@ -5,12 +5,15 @@ const ejs = require("ejs");
 const Listing = require("./models/listing");
 const path = require("path");
 const methodOverride = require("method-override");
+const ejsMate = require("ejs-mate");
 
 
 //this is used to tell "Please read and understand the data coming from HTML forms ." to express
 app.use(express.urlencoded({extended : true}));
 
 app.use(methodOverride("_method"));
+app.use(express.static(path.join(__dirname, "public")));
+
 
 const MONGO_URL ='mongodb://127.0.0.1:27017/Homisphere';
 
@@ -28,7 +31,7 @@ async function main(){
 app.get("/",(req,res)=>{
   res.send("Hi i am root");
 });
-
+app.engine("ejs",ejsMate);
 app.set("view engine","ejs"); //// using EJS templates
 app.set("views", path.join(__dirname, "views"));
 
